@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
-import { LayoutDashboard, Library, Calculator, Settings, Menu, Layers, Leaf } from 'lucide-react';
+import { LayoutDashboard, Library, Calculator, Settings as SettingsIcon, Menu, Layers, Leaf } from 'lucide-react';
 import Dashboard from './components/Dashboard';
 import MaterialLibrary from './components/MaterialLibrary';
 import CarbonCalculator from './components/CarbonCalculator';
 import TextureVisualizer from './components/TextureVisualizer';
+import Settings from './components/Settings';
 
 type View = 'dashboard' | 'materials' | 'visualizer' | 'calculator' | 'settings';
 
@@ -17,7 +18,7 @@ const App: React.FC = () => {
       case 'materials': return <MaterialLibrary />;
       case 'visualizer': return <TextureVisualizer />;
       case 'calculator': return <CarbonCalculator />;
-      case 'settings': return <div className="p-10 text-center text-stone-500">Paramètres (Non implémenté)</div>;
+      case 'settings': return <Settings />;
       default: return <Dashboard />;
     }
   };
@@ -68,7 +69,7 @@ const App: React.FC = () => {
           <NavItem view="visualizer" icon={Layers} label="Visualiseur 3D" />
           <NavItem view="materials" icon={Library} label="Texture-Thèque" />
           <NavItem view="calculator" icon={Calculator} label="Impact Carbone" />
-          <NavItem view="settings" icon={Settings} label="Paramètres" />
+          <NavItem view="settings" icon={SettingsIcon} label="Paramètres" />
         </nav>
 
         <div className="absolute bottom-0 w-full p-6 bg-stone-50 border-t border-stone-200">
