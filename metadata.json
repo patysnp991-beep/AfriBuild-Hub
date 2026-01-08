@@ -1,0 +1,5 @@
+{
+  "name": "Afribuild",
+  "description": "Une PWA pour l'architecture bioclimatique et les matériaux locaux en Afrique.",
+  "requestFramePermissions": []
+}
