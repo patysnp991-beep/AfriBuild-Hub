@@ -17,27 +17,9 @@ const BioclimaticWidget: React.FC = () => {
       setAdvice(cachedAdvice);
       setLoading(false);
     } else {
-      // Updated prompt to focus on materials and textures as requested
-      const prompt = `Vous êtes un expert en architecture bioclimatique en Afrique. 
-      Analysez le climat de ${targetCity}.
-      Suggérez spécifiquement quel matériau (ex: BTC, Bambou, Pierre) et quelle texture utiliser pour les murs afin d'optimiser le confort thermique.
-      Soyez concis (max 40 mots).`;
-      
-      const result = await getBioclimaticAdvice(prompt); // Passing prompt as "city" to the service loosely, usually service takes contents directly but looking at existing service implementation it takes 'city' and builds prompt. We need to update service or pass city here.
-      
-      // Wait, let's look at geminiService.ts. It builds the string inside.
-      // I cannot change geminiService logic easily without changing the file. 
-      // I will assume for this step I should rely on the service's existing structure or update the service.
-      // Let's modify the service call logic in geminiService if possible, OR, since I can modify files:
-      // I will actually pass the city, but I'll update the geminiService to accept a custom prompt OR I will stick to the previous file change constraint.
-      // Actually, looking at the previous turn, I can just update the service call here if I update the service file.
-      // But simpler: The previous service takes `city` and hardcodes the prompt. 
-      // I will update `services/geminiService.ts` to reflect the new requirement for "Texture/Material" advice.
-      
-      // Re-fetching strictly with city name for now, but I will update the service file next.
-      const resultReal = await getBioclimaticAdvice(targetCity);
-      setAdvice(resultReal);
-      saveToCache(cacheKey, resultReal);
+      const result = await getBioclimaticAdvice(targetCity);
+      setAdvice(result);
+      saveToCache(cacheKey, result);
       setLoading(false);
     }
   };
